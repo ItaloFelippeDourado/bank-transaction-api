@@ -16,3 +16,14 @@ spring:
   h2:
     console:
       enabled: true
+
+#System Variables
+transaction:
+  fixedFee: 3.00
+  dayPercentage:
+    taxA: 0.03
+    taxB: 0.09
+    taxC1: 0.082
+    taxC2: 0.069
+    taxC3: 0.047
+    taxC4: 0.017
