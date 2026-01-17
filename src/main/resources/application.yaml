@@ -1,0 +1,8 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /bank-transaction
+
+spring:
+  application:
+    name: bank-transaction-api
