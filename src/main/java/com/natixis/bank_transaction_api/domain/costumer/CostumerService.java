@@ -18,11 +18,11 @@ public class CostumerService {
     }
 
     public void register(CostumerRequest request) {
-        if (costumerRepository.findByUsername(request.username()).isPresent()) {
+        if (costumerRepository.findByUsername(request.getUsername()).isPresent()) {
             throw new RuntimeException("Costumer already exists!");
         }
 
-        CostumerEntity user = new CostumerEntity(request.username(), request.email(), passwordEncoder.encode(request.password()));
+        CostumerEntity user = new CostumerEntity(request.getUsername(), request.getEmail(), passwordEncoder.encode(request.getPassword()));
 
         costumerRepository.save(user);
     }

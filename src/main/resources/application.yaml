@@ -34,3 +34,6 @@ transaction:
     taxC2: 0.069
     taxC3: 0.047
     taxC4: 0.017
+jwt:
+  secret: ${JWT_SECRET:chave-super-secreta-com-32-bytes}
+  expiration: ${JWT_EXPIRATION:60000}

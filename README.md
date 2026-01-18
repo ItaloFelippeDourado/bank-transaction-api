@@ -2,6 +2,14 @@
 
 API for scheduling bank transactions.
 
+## Stack
+
+- Maven
+- Java 17
+- Spring Boot 3
+- Spring Security
+- H2 Database
+
 ## How to install
 
 Run `mvn package` and then run `java -jar target/bank-transaction-api-0.0.1-SNAPSHOT.jar`

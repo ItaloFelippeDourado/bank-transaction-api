@@ -34,12 +34,12 @@ public class TransactionEntity {
     private TaxType taxType;
 
     @Column(
-            name = "tax_amount",
+            name = "tax_applied",
             nullable = false,
             precision = 19,
             scale = 2
     )
-    private BigDecimal taxAmount;
+    private BigDecimal taxApplied;
 
     @Column(
             name = "result_amount",
@@ -55,16 +55,36 @@ public class TransactionEntity {
 
     protected TransactionEntity() {}
 
-    public TransactionEntity(BigDecimal amount, LocalDate transactionDate, TaxType taxType, BigDecimal taxedAmount, BigDecimal resultAmount, CostumerEntity costumer) {
+    public TransactionEntity(BigDecimal amount, LocalDate transactionDate, TaxType taxType, BigDecimal taxApplied, BigDecimal resultAmount, CostumerEntity costumer) {
         this.amount = amount;
         this.transactionDate = transactionDate;
         this.taxType = taxType;
-        this.taxAmount = taxedAmount;
+        this.taxApplied = taxApplied;
         this.resultAmount = resultAmount;
         this.costumer = costumer;
     }
 
     public UUID getId() {
         return id;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public LocalDate getTransactionDate() {
+        return transactionDate;
+    }
+
+    public TaxType getTaxType() {
+        return taxType;
+    }
+
+    public BigDecimal getTaxApplied() {
+        return taxApplied;
+    }
+
+    public BigDecimal getResultAmount() {
+        return resultAmount;
     }
 }
