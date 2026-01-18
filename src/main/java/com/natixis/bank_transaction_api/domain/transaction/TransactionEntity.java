@@ -1,5 +1,6 @@
-package com.natixis.bank_transaction_api.domain;
+package com.natixis.bank_transaction_api.domain.transaction;
 
+import com.natixis.bank_transaction_api.domain.costumer.CostumerEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -48,13 +49,22 @@ public class TransactionEntity {
     )
     private BigDecimal resultAmount;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private CostumerEntity costumer;
+
     protected TransactionEntity() {}
 
-    public TransactionEntity(BigDecimal amount, LocalDate transactionDate, TaxType taxType, BigDecimal taxedAmount, BigDecimal resultAmount) {
+    public TransactionEntity(BigDecimal amount, LocalDate transactionDate, TaxType taxType, BigDecimal taxedAmount, BigDecimal resultAmount, CostumerEntity costumer) {
         this.amount = amount;
         this.transactionDate = transactionDate;
         this.taxType = taxType;
         this.taxAmount = taxedAmount;
         this.resultAmount = resultAmount;
+        this.costumer = costumer;
+    }
+
+    public UUID getId() {
+        return id;
     }
 }

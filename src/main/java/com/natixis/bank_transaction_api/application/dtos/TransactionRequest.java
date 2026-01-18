@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record TransactionRequest(
-        @NotNull(message = "Amount não pode ser nulo")
+        @NotNull(message = "Amount can not be null")
         @DecimalMin(value = "1", message = "Amount deve ser maior que 0")
         BigDecimal amount,
 

@@ -1,6 +1,6 @@
-package com.natixis.bank_transaction_api.infrastructure;
+package com.natixis.bank_transaction_api.infrastructure.repositories;
 
-import com.natixis.bank_transaction_api.domain.TransactionEntity;
+import com.natixis.bank_transaction_api.domain.transaction.TransactionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

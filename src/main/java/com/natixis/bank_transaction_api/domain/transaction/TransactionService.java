@@ -1,15 +1,20 @@
-package com.natixis.bank_transaction_api.domain;
+package com.natixis.bank_transaction_api.domain.transaction;
 
 import com.natixis.bank_transaction_api.application.dtos.TransactionRequest;
-import com.natixis.bank_transaction_api.infrastructure.TransactionRepository;
+import com.natixis.bank_transaction_api.application.dtos.TransactionResponse;
+import com.natixis.bank_transaction_api.domain.costumer.CostumerEntity;
+import com.natixis.bank_transaction_api.domain.costumer.CostumerService;
+import com.natixis.bank_transaction_api.infrastructure.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Service
+@Transactional
 public class TransactionService {
 
     @Value("${transaction.fixedFee}")
@@ -34,13 +39,19 @@ public class TransactionService {
     private BigDecimal dayPercentageTaxC4;
 
     private final TransactionRepository repository;
+    private final CostumerService costumerService;
 
     @Autowired
-    public TransactionService(TransactionRepository repository) {
+    public TransactionService(TransactionRepository repository, CostumerService costumerService) {
         this.repository = repository;
+        this.costumerService = costumerService;
     }
 
-    public void scheduleTransaction(TransactionRequest request) {
+
+    public TransactionResponse scheduleTransaction(TransactionRequest request) {
+
+        CostumerEntity costumer = costumerService.getLoggedUser();
+
         TaxType taxType = TaxType.A;
         BigDecimal taxAmount = BigDecimal.ZERO;
         BigDecimal resultAmount = BigDecimal.ZERO;
@@ -54,8 +65,11 @@ public class TransactionService {
                 request.transactionDate(),
                 taxType,
                 taxAmount,
-                resultAmount);
+                resultAmount,
+                costumer);
 
         repository.save(entity);
+
+        return new TransactionResponse(entity.getId(), taxAmount, resultAmount);
     }
 }

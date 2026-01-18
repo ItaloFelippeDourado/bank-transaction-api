@@ -17,6 +17,13 @@ spring:
     console:
       enabled: true
 
+logging:
+  level:
+    root: INFO                # nível global
+    org.springframework.security: DEBUG  # logs detalhados de segurança
+    org.hibernate.SQL: DEBUG   # opcional: logs de SQL para depuração
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # mostra valores bindados no SQL
+
 #System Variables
 transaction:
   fixedFee: 3.00

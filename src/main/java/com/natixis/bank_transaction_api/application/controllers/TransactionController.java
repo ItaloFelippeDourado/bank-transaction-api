@@ -1,7 +1,8 @@
 package com.natixis.bank_transaction_api.application.controllers;
 
 import com.natixis.bank_transaction_api.application.dtos.TransactionRequest;
-import com.natixis.bank_transaction_api.domain.TransactionService;
+import com.natixis.bank_transaction_api.application.dtos.TransactionResponse;
+import com.natixis.bank_transaction_api.domain.transaction.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -29,8 +30,8 @@ public class TransactionController {
 
     @PostMapping
     @Operation(summary = "Post transactions", description = "Schedule a transaction")
-    public ResponseEntity<?> scheduleTransaction(@Valid @RequestBody TransactionRequest request) {
-        service.scheduleTransaction(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<TransactionResponse> scheduleTransaction(@Valid @RequestBody TransactionRequest request) {
+        TransactionResponse response = service.scheduleTransaction(request);
+        return ResponseEntity.ok(response);
     }
 }
