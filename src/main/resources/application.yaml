@@ -16,3 +16,24 @@ spring:
   h2:
     console:
       enabled: true
+
+logging:
+  level:
+    root: INFO                # nível global
+    org.springframework.security: DEBUG  # logs detalhados de segurança
+    org.hibernate.SQL: DEBUG   # opcional: logs de SQL para depuração
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # mostra valores bindados no SQL
+
+#System Variables
+transaction:
+  fixedFee: 3.00
+  dayPercentage:
+    taxA: 0.03
+    taxB: 0.09
+    taxC1: 0.082
+    taxC2: 0.069
+    taxC3: 0.047
+    taxC4: 0.017
+jwt:
+  secret: ${JWT_SECRET:chave-super-secreta-com-32-bytes}
+  expiration: ${JWT_EXPIRATION:60000}
