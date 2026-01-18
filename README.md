@@ -14,6 +14,12 @@ API for scheduling bank transactions.
 
 Run `mvn package` and then run `java -jar target/bank-transaction-api-0.0.1-SNAPSHOT.jar`
 
+## Step-by-step
+
+1. Register account in Costumer API
+2. Use your costumer credentials to login in Auth API
+3. Feel free to use the Transaction API
+
 ## API
 
 The API is available at http://localhost:8080/bank-transaction/swagger-ui/index.html
