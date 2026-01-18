@@ -11,6 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/transaction")
 @Validated
@@ -25,9 +28,9 @@ public class TransactionController {
     }
 
     @GetMapping
-    @Operation(summary = "Get transactions", description = "Returns 'transactions'")
-    public String getTransactions() {
-        return "transactions";
+    @Operation(summary = "Get transactions", description = "Returns all transactions of a costumer")
+    public ResponseEntity<List<TransactionResponse>> getTransactions() {
+        return ResponseEntity.of(Optional.ofNullable(service.getScheduledTransactions()));
     }
 
     @PostMapping

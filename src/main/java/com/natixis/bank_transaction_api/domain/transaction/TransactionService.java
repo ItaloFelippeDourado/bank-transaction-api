@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 @Service
 @Transactional
@@ -49,6 +50,21 @@ public class TransactionService {
         this.costumerService = costumerService;
     }
 
+    public List<TransactionResponse> getScheduledTransactions() {
+        CostumerEntity costumer = costumerService.getLoggedUser();
+
+        return repository.findAllByCostumer(costumer)
+                .stream()
+                .map(entity -> new TransactionResponse(
+                        entity.getId(),
+                        entity.getAmount(),
+                        entity.getTransactionDate(),
+                        entity.getTaxType(),
+                        entity.getTaxApplied(),
+                        entity.getResultAmount()
+                ))
+                .toList();
+    }
 
     public TransactionResponse scheduleTransaction(TransactionRequest request) {
 
