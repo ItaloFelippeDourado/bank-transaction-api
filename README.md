@@ -7,7 +7,7 @@ API for scheduling bank transactions.
 - Maven
 - Java 17
 - Spring Boot 3
-- Spring Security
+- Spring Security + JWT
 - H2 Database
 
 ## How to install
@@ -31,5 +31,6 @@ http://localhost:8080/bank-transaction/h2-console/
 
 ## References
 
+- [JWT](https://www.geeksforgeeks.org/web-tech/json-web-token-jwt/)
 - [Architecture](https://guia.dev/pt/pillars/software-architecture/layers-and-architecture-patterns.html)
 - [Conventional commits](https://dev.to/renatoadorno/padroes-de-commits-commit-patterns-41co)

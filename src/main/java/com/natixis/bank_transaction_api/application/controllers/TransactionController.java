@@ -35,18 +35,25 @@ public class TransactionController {
     }
 
     @PostMapping
-    @Operation(summary = "Post transactions", description = "Schedule a transaction")
+    @Operation(summary = "Post transactions", description = "Schedules a transaction")
     public ResponseEntity<TransactionResponse> scheduleTransaction(@Valid @RequestBody TransactionRequest request) {
         TransactionResponse response = service.scheduleTransaction(request);
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{transactionId}")
-    @Operation(summary = "Put transaction", description = "Update a transaction by transactionId")
+    @Operation(summary = "Put transaction", description = "Updates a transaction by transactionId")
     public ResponseEntity<TransactionResponse> updateTransaction(
             @PathVariable UUID transactionId,
             @Valid @RequestBody TransactionRequest request) {
         TransactionResponse response = service.updateTransaction(transactionId, request);
         return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{transactionId}")
+    @Operation(summary = "Delete Transaction", description = "Deletes a transaction by its ID")
+    public ResponseEntity<Void> deleteTransaction(@PathVariable UUID transactionId) {
+        service.deleteTransaction(transactionId);
+        return ResponseEntity.noContent().build();
     }
 }

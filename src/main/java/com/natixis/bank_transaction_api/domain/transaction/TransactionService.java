@@ -96,6 +96,19 @@ public class TransactionService {
         return mapper.toResponse(entityUpdated);
     }
 
+    public void deleteTransaction(UUID transactionId) {
+        CostumerEntity loggedUser = costumerService.getLoggedUser();
+
+        TransactionEntity entity = repository.findById(transactionId)
+                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+
+        if (!entity.getCostumer().getId().equals(loggedUser.getId())) {
+            throw new RuntimeException("You are not allowed to delete this transaction");
+        }
+
+        repository.delete(entity);
+    }
+
     private void calculateTax(TransactionEntity entity) {
 
         BigDecimal amount = entity.getAmount();
