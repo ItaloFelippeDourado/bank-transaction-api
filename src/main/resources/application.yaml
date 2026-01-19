@@ -19,10 +19,10 @@ spring:
 
 logging:
   level:
-    root: INFO                # nível global
-    org.springframework.security: DEBUG  # logs detalhados de segurança
-    org.hibernate.SQL: DEBUG   # opcional: logs de SQL para depuração
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # mostra valores bindados no SQL
+    root: INFO
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 #System Variables
 transaction:
@@ -36,4 +36,4 @@ transaction:
     taxC4: 0.017
 jwt:
   secret: ${JWT_SECRET:chave-super-secreta-com-32-bytes}
-  expiration: ${JWT_EXPIRATION:60000}
+  expiration: ${JWT_EXPIRATION:120000}

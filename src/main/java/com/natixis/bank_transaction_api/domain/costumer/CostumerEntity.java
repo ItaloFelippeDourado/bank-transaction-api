@@ -40,4 +40,8 @@ public class CostumerEntity {
     public String getPassword() {
         return password;
     }
+
+    public UUID getId() {
+        return id;
+    }
 }

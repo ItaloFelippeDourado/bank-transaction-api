@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/transaction")
@@ -37,6 +38,15 @@ public class TransactionController {
     @Operation(summary = "Post transactions", description = "Schedule a transaction")
     public ResponseEntity<TransactionResponse> scheduleTransaction(@Valid @RequestBody TransactionRequest request) {
         TransactionResponse response = service.scheduleTransaction(request);
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/{transactionId}")
+    @Operation(summary = "Put transaction", description = "Update a transaction by transactionId")
+    public ResponseEntity<TransactionResponse> updateTransaction(
+            @PathVariable UUID transactionId,
+            @Valid @RequestBody TransactionRequest request) {
+        TransactionResponse response = service.updateTransaction(transactionId, request);
         return ResponseEntity.ok(response);
     }
 }
