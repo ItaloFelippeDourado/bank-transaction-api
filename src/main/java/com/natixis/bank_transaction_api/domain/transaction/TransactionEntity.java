@@ -55,6 +55,12 @@ public class TransactionEntity {
 
     protected TransactionEntity() {}
 
+    public TransactionEntity(BigDecimal amount, LocalDate transactionDate, CostumerEntity costumer) {
+        this.amount = amount;
+        this.transactionDate = transactionDate;
+        this.costumer = costumer;
+    }
+
     public TransactionEntity(BigDecimal amount, LocalDate transactionDate, TaxType taxType, BigDecimal taxApplied, BigDecimal resultAmount, CostumerEntity costumer) {
         this.amount = amount;
         this.transactionDate = transactionDate;
@@ -86,5 +92,29 @@ public class TransactionEntity {
 
     public BigDecimal getResultAmount() {
         return resultAmount;
+    }
+
+    public CostumerEntity getCostumer() {
+        return costumer;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public void setTransactionDate(LocalDate transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public void setTaxType(TaxType taxType) {
+        this.taxType = taxType;
+    }
+
+    public void setTaxApplied(BigDecimal taxApplied) {
+        this.taxApplied = taxApplied;
+    }
+
+    public void setResultAmount(BigDecimal resultAmount) {
+        this.resultAmount = resultAmount;
     }
 }
