@@ -117,4 +117,8 @@ public class TransactionEntity {
     public void setResultAmount(BigDecimal resultAmount) {
         this.resultAmount = resultAmount;
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 }
