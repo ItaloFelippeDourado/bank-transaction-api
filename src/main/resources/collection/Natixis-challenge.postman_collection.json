@@ -1,0 +1,238 @@
+{
+  "info": {
+    "_postman_id": "e6a807f0-3372-48cd-8509-647cb278d1fa",
+    "name": "Natixis-challenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "28275275",
+    "_collection_link": "https://go.postman.co/collection/28275275-e6a807f0-3372-48cd-8509-647cb278d1fa?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "03 - Transaction",
+      "item": [
+        {
+          "name": "get a transaction",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpdGFsby5kb3VyYWRvIiwiaWF0IjoxNzY4ODE3NDYzLCJleHAiOjE3Njg4MTc1ODN9.9_YW7wnqKIC426rwMRLsikm8Nh1Zhz6kCjSRBHLtb0s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/bank-transaction/transaction",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "bank-transaction",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "post a transaction",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpdGFsby5kb3VyYWRvIiwiaWF0IjoxNzY4ODE4NzExLCJleHAiOjE3Njg4MTg4MzF9.sgkbOXrve4Oh4cwcoapLk-VQkoRfnzD45QkWJ0ED9f0",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 2500,\r\n    \"transactionDate\": \"2026-02-15\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/bank-transaction/transaction",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "bank-transaction",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update Transaction",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpdGFsby5kb3VyYWRvIiwiaWF0IjoxNzY4ODE3NTU3LCJleHAiOjE3Njg4MTc2Nzd9.9EdF0drY2mR6SZ5u5ec-ZsPClq_qnQ5qmqiaS5qM32Y",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 250,\r\n    \"transactionDate\": \"2026-01-20\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/bank-transaction/transaction/:transactionId",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "bank-transaction",
+                "transaction",
+                ":transactionId"
+              ],
+              "variable": [
+                {
+                  "key": "transactionId",
+                  "value": "4a504d70-b4a1-479c-aa68-871bc2c1f31f"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Transaction",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpdGFsby5kb3VyYWRvIiwiaWF0IjoxNzY4ODE4ODkyLCJleHAiOjE3Njg4MTkwMTJ9.VqGn5UcbB_yQYd3avXBUMVxeyZ-W_YPmHtb-zH_uGwo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/bank-transaction/transaction/:transactionId",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "bank-transaction",
+                "transaction",
+                ":transactionId"
+              ],
+              "variable": [
+                {
+                  "key": "transactionId",
+                  "value": "0cd647de-d88f-40ef-bd8c-698b418c38c5"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "01 - Costumer",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"italo.dourado\",\r\n    \"email\": \"italodouradoprofissional@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/bank-transaction/costumer/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "bank-transaction",
+                "costumer",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 - Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"italo.dourado\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/bank-transaction/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "bank-transaction",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

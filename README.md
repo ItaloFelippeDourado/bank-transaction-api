@@ -14,11 +14,14 @@ API for scheduling bank transactions.
 
 Run `mvn package` and then run `java -jar target/bank-transaction-api-0.0.1-SNAPSHOT.jar`
 
+Run `mvn clean spring-boot:run`
+
 ## Step-by-step
 
 1. Register account in Costumer API
 2. Use your costumer credentials to login in Auth API
 3. Feel free to use the Transaction API
+Obs: There is a collection that can helps you to test the API. Go to resources/collection
 
 ## API
 
