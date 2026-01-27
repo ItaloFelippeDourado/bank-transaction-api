@@ -1,6 +1,7 @@
 package com.natixis.bank_transaction_api.domain.costumer;
 
 import com.natixis.bank_transaction_api.application.dtos.CostumerRequest;
+import com.natixis.bank_transaction_api.domain.exceptions.UserAlreadyExistsException;
 import com.natixis.bank_transaction_api.infrastructure.repositories.CostumerRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,7 +20,7 @@ public class CostumerService {
 
     public void register(CostumerRequest request) {
         if (costumerRepository.findByUsername(request.getUsername()).isPresent()) {
-            throw new RuntimeException("Costumer already exists!");
+            throw new UserAlreadyExistsException("Costumer already exists!");
         }
 
         CostumerEntity user = new CostumerEntity(request.getUsername(), request.getEmail(), passwordEncoder.encode(request.getPassword()));

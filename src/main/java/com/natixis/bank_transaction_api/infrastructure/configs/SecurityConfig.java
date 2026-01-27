@@ -21,24 +21,18 @@ public class SecurityConfig {
 
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        // endpoints públicos
                         .requestMatchers(
                                 "/auth/login",
                                 "/costumer/register",
                                 "/h2-console/**",
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**"
-                        ).permitAll()
-                        // todos os outros requerem autenticação
-                        .anyRequest().authenticated()
-                )
+                                "/v3/api-docs/**")
+                        .permitAll()
+                        .anyRequest().authenticated())
                 .headers(headers -> headers
-                        // permite o H2 console
-                        .frameOptions(frame -> frame.sameOrigin())
-                )
-                // sessão stateless
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                // adiciona filtro JWT apenas depois dos endpoints públicos
+                        .frameOptions(frame -> frame.sameOrigin()))
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
