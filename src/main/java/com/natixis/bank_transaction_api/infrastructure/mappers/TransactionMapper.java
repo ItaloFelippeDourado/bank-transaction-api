@@ -23,8 +23,6 @@ public class TransactionMapper {
     }
 
     public List<TransactionResponse> toResponseList(List<TransactionEntity> entities) {
-        return entities.stream()
-                .map(this::toResponse)
-                .toList();
+        return entities.stream().map(this::toResponse).toList();
     }
 }

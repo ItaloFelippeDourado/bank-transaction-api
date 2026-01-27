@@ -50,7 +50,7 @@ public class TransactionEntity {
     private BigDecimal resultAmount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "costumer_id", nullable = false)
     private CostumerEntity costumer;
 
     protected TransactionEntity() {}
